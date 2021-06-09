@@ -7,4 +7,6 @@ module.exports = async function(deployer, network, accounts) {
     console.log("contract_owner",contract_owner);
     console.log("devReceive",devReceive);
 
+    deployer.deploy(Dina,devReceive); //deploy DINA
+
 }

@@ -31,7 +31,8 @@ module.exports = {
       network_id: 97,
       confirmations: 1,
       timeoutBlocks: 200,
-      skipDryRun: true
+      skipDryRun: true,
+      gas: 7492052
     },
 
   },

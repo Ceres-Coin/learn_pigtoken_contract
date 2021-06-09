@@ -5,5 +5,5 @@ const PigToken = artifacts.require("PigToken");
 
 module.exports = function (deployer) {
   deployer.deploy(Migrations);
-  deployer.deploy(PigToken); //deploy PigToken
+  // deployer.deploy(PigToken); //deploy PigToken
 };
