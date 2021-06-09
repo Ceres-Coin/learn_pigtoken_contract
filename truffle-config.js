@@ -32,7 +32,7 @@ module.exports = {
       confirmations: 1,
       timeoutBlocks: 200,
       skipDryRun: true,
-      gas: 7492052
+      gas: 27492052
     },
 
   },

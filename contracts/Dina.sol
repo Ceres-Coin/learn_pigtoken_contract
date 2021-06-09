@@ -818,55 +818,55 @@ contract Dina is Context, IERC20, Ownable {
         return true;
     }
 
-    function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {
-        _approve(_msgSender(), spender, _allowances[_msgSender()][spender].add(addedValue));
-        return true;
-    }
+    // function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {
+    //     _approve(_msgSender(), spender, _allowances[_msgSender()][spender].add(addedValue));
+    //     return true;
+    // }
 
-    function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
-        _approve(_msgSender(), spender, _allowances[_msgSender()][spender].sub(subtractedValue, "ERC20: decreased allowance below zero"));
-        return true;
-    }
+    // function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
+    //     _approve(_msgSender(), spender, _allowances[_msgSender()][spender].sub(subtractedValue, "ERC20: decreased allowance below zero"));
+    //     return true;
+    // }
 
     function isExcludedFromReward(address account) public view returns (bool) {
         return _isExcluded[account];
     }
 
-    function deliver(uint256 tAmount) public {
-        address sender = _msgSender();
-        require(!_isExcluded[sender], "Excluded addresses cannot call this function");
-        uint256 rAmount = tAmount.mul(_getRate());
-        _rOwned[sender] = _rOwned[sender].sub(rAmount);
-        _rTotal = _rTotal.sub(rAmount);
-    }
+    // function deliver(uint256 tAmount) public {
+    //     address sender = _msgSender();
+    //     require(!_isExcluded[sender], "Excluded addresses cannot call this function");
+    //     uint256 rAmount = tAmount.mul(_getRate());
+    //     _rOwned[sender] = _rOwned[sender].sub(rAmount);
+    //     _rTotal = _rTotal.sub(rAmount);
+    // }
 
     function tokenFromReflection(uint256 rAmount) public view returns(uint256) {
         require(rAmount <= _rTotal, "Amount must be less than total reflections");
         return rAmount.div(_getRate());
     }
 
-    function excludeFromReward(address account) public onlyOwner() {
-        // require(account != 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, 'We can not exclude Uniswap router.');
-        require(!_isExcluded[account], "Account is already excluded");
-        if(_rOwned[account] > 0) {
-            _tOwned[account] = tokenFromReflection(_rOwned[account]);
-        }
-        _isExcluded[account] = true;
-        _excluded.push(account);
-    }
+    // function excludeFromReward(address account) public onlyOwner() {
+    //     // require(account != 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, 'We can not exclude Uniswap router.');
+    //     require(!_isExcluded[account], "Account is already excluded");
+    //     if(_rOwned[account] > 0) {
+    //         _tOwned[account] = tokenFromReflection(_rOwned[account]);
+    //     }
+    //     _isExcluded[account] = true;
+    //     _excluded.push(account);
+    // }
 
-    function includeInReward(address account) external onlyOwner() {
-        require(_isExcluded[account], "Account is already excluded");
-        for (uint256 i = 0; i < _excluded.length; i++) {
-            if (_excluded[i] == account) {
-                _excluded[i] = _excluded[_excluded.length - 1];
-                _tOwned[account] = 0;
-                _isExcluded[account] = false;
-                _excluded.pop();
-                break;
-            }
-        }
-    }
+    // function includeInReward(address account) external onlyOwner() {
+    //     require(_isExcluded[account], "Account is already excluded");
+    //     for (uint256 i = 0; i < _excluded.length; i++) {
+    //         if (_excluded[i] == account) {
+    //             _excluded[i] = _excluded[_excluded.length - 1];
+    //             _tOwned[account] = 0;
+    //             _isExcluded[account] = false;
+    //             _excluded.pop();
+    //             break;
+    //         }
+    //     }
+    // }
     
     function excludeFromFee(address account) public onlyOwner {
         _isExcludedFromFee[account] = true;
