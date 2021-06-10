@@ -152,6 +152,10 @@ module.exports = async function(deployer, network, accounts) {
     const ar_balanceOf_account3_after3 = (new BigNumber(await instancePigToken.balanceOf(account3))).div(BIG9);
     console.log(chalk.yellow("ar_balanceOf_account1_after3 ",ar_balanceOf_account1_after3.toString()));
     console.log(chalk.yellow("ar_balanceOf_account3_after3 ",ar_balanceOf_account3_after3.toString()));
+    // Roll Back        
+    await instancePigToken.setTaxFeePercent(2,{from: CONTRACT_OWNER});
+    const ar_setTaxFeePercent_after2 = await instancePigToken._taxFee.call(); 
+    console.log("ar_setTaxFeePercent_after2: ",ar_setTaxFeePercent_after2);
 
 
 }
