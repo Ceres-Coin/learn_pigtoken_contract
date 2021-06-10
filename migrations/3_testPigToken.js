@@ -13,12 +13,20 @@ module.exports = async function(deployer, network, accounts) {
     const instancePigToken = await PigToken.deployed()
     console.log("instancePigToken: ",instancePigToken.address);
 
-    const name = await instancePigToken.name();
-    console.log(chalk.blue("ER: name: ",name.toString()));
+    console.log(chalk.red.bold("ASSERT Initialize"));
+    assert.equal(1,1,"ASSERTION FAILED");
+
+    // Test Scripts for name() func
+    const er_name = "Pig Token";
+    const ar_name = (await instancePigToken.name()).toString();
+    assert.equal(er_name,ar_name);
+    console.log(chalk.blue("er_name : ",er_name.toString()));
+    console.log(chalk.yellow("ar_name : ",ar_name.toString()));
+
+    
 
     const symbol = await instancePigToken.symbol();
     console.log(chalk.blue("ER: symbol: ",symbol.toString()));
 
-    console.log(chalk.red.bold("ASSERT Initialize"));
-    assert.equal(1,1,"ASSERTION FAILED");
+
 }
