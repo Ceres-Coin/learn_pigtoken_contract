@@ -17,6 +17,7 @@ const BIG18 = new BigNumber("1e18")
 module.exports = async function(deployer, network, accounts) {
 
     const account0 = accounts[0];
+    const CONTRACT_OWNER = account0;
     const account1 = accounts[1];
     const account2 = accounts[2];
     console.log(chalk.blue.bold("============= account0 ",account0," ================"));
@@ -123,14 +124,21 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_balanceOf_account1_after2 ",ar_balanceOf_account1_after2.toString()));
     console.log(chalk.yellow("ar_balanceOf_account2_after2 ",ar_balanceOf_account2_after2.toString()));
 
-
-
-
     // Test Scripts for _taxFee parameter
     console.log(chalk.green.bold("============= Test Case for _taxFee ================"));
-    // const er_taxFee = (new BigNumber(0)).toNumber();
+    const er_taxFee = 2;
     const ar_taxFee = await instancePigToken._taxFee.call();
-    // assert.equal(ar_taxFee,er_taxFee);
-    // console.log(chalk.blue("er_taxFee : ",er_taxFee.toString()));
+    assert.equal(ar_taxFee,er_taxFee);
+    console.log(chalk.blue("er_taxFee : ",er_taxFee.toString()));
     console.log(chalk.yellow("ar_taxFee : ",ar_taxFee.toString()));
+
+    // // Test Scripts for setTaxFeePercent parameter
+    // console.log(chalk.green.bold("============= Test Case for setTaxFeePercent ================"));
+    // // const ersetTaxFeePercent = (new BigNumber(0)).toNumber();
+    // const arsetTaxFeePercent = await instancePigToken.setTaxFeePercent.call();
+    // // assert.equal(arsetTaxFeePercent,ersetTaxFeePercent);
+    // // console.log(chalk.blue("ersetTaxFeePercent : ",ersetTaxFeePercent.toString()));
+    // console.log(chalk.yellow("arsetTaxFeePercent : ",arsetTaxFeePercent.toString()));
+
+
 }
