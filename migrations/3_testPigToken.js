@@ -19,14 +19,17 @@ module.exports = async function(deployer, network, accounts) {
     // Test Scripts for name() func
     const er_name = "Pig Token";
     const ar_name = (await instancePigToken.name()).toString();
-    assert.equal(er_name,ar_name);
+    assert.equal(ar_name,er_name);
     console.log(chalk.blue("er_name : ",er_name.toString()));
     console.log(chalk.yellow("ar_name : ",ar_name.toString()));
 
     
-
-    const symbol = await instancePigToken.symbol();
-    console.log(chalk.blue("ER: symbol: ",symbol.toString()));
+    // Test Scripts for symbol() func
+    const er_symbol = "PIG";
+    const ar_symbol = (await instancePigToken.symbol()).toString();
+    assert.equal(ar_symbol,er_symbol);
+    console.log(chalk.blue("er_symbol : ",er_symbol.toString()));
+    console.log(chalk.yellow("ar_symbol : ",ar_symbol.toString()));
 
 
 }
