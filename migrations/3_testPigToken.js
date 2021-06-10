@@ -66,10 +66,10 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_balanceOf_account1 : ",ar_balanceOf_account1.toString()));
 
     // Test Scripts for totalFees() func
-    // const er_totalFees = (new BigNumber(1000000000 * 10**6 * 10**9)).toNumber();
+    const er_totalFees = (new BigNumber(0)).toNumber();
     const ar_totalFees = await instancePigToken.totalFees();
-    // assert.equal(ar_totalFees,er_totalFees);
-    // console.log(chalk.blue("er_totalFees : ",er_totalFees.toString()));
+    assert.equal(ar_totalFees,er_totalFees);
+    console.log(chalk.blue("er_totalFees : ",er_totalFees.toString()));
     console.log(chalk.yellow("ar_totalFees : ",ar_totalFees.toString()));
 
 }
