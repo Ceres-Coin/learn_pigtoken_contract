@@ -145,6 +145,12 @@ module.exports = async function(deployer, network, accounts) {
     // Print
     console.log(chalk.yellow("ar_setTaxFeePercent_before : ",ar_setTaxFeePercent_before.toString()));
     console.log(chalk.yellow("ar_setTaxFeePercent_after : ",ar_setTaxFeePercent_after.toString()));
+    // Test For New Tax for transferring
+    await instancePigToken.transfer(account2,ONE_MILLION_DEC9,{ from: account1 });
+    ar_balanceOf_account1_after2 = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9);
+    ar_balanceOf_account2_after2 = (new BigNumber(await instancePigToken.balanceOf(account2))).div(BIG9);
+    console.log(chalk.yellow("ar_balanceOf_account1_after2 ",ar_balanceOf_account1_after2.toString()));
+    console.log(chalk.yellow("ar_balanceOf_account2_after2 ",ar_balanceOf_account2_after2.toString()));
 
 
 }
