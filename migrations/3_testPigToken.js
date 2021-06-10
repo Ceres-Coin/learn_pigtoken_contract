@@ -104,7 +104,7 @@ module.exports = async function(deployer, network, accounts) {
     const ar_balanceOf_account0_after = (new BigNumber(await instancePigToken.balanceOf(account0))).div(BIG9);
     const ar_balanceOf_account1_after = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9);
 
-    assert.equal(er_balanceOf_account1_after,ar_balanceOf_account1_after,"ASSERTION FAILED");
+    assert.equal(er_balanceOf_account1_after.toString(),ar_balanceOf_account1_after.toString(),"ASSERTION FAILED");
 
     console.log(chalk.blue("er_balanceOf_account1_after: ",er_balanceOf_account1_after.toString()));
     console.log(chalk.yellow("ar_balanceOf_account0_before ",ar_balanceOf_account0_before.toString()));
