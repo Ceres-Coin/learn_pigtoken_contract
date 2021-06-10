@@ -2,6 +2,7 @@ const Migrations = artifacts.require("Migrations");
 
 const PigToken = artifacts.require("PigToken");
 const chalk = require('chalk');
+const { assert } = require('chai');
 
 
 // Make sure Ganache is running beforehand
@@ -18,5 +19,6 @@ module.exports = async function(deployer, network, accounts) {
     const symbol = await instancePigToken.symbol();
     console.log(chalk.blue("ER: symbol: ",symbol.toString()));
 
-
+    console.log(chalk.red.bold("ASSERT Initialize"));
+    assert.equal(1,1,"ASSERTION FAILED");
 }
