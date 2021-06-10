@@ -52,4 +52,16 @@ module.exports = async function(deployer, network, accounts) {
     assert.equal(ar_totalSupply,er_totalSupply);
     console.log(chalk.blue("er_totalSupply : ",er_totalSupply.toString()));
     console.log(chalk.yellow("ar_totalSupply : ",ar_totalSupply.toString()));
+
+    // Test Scripts for balanceOf() func
+    const er_balanceOf_account0 = (new BigNumber(1000000000000000000000000)).toNumber();
+    const er_balanceOf_account1 = (new BigNumber(0)).toNumber();
+    const ar_balanceOf_account0 = await instancePigToken.balanceOf(account0);
+    const ar_balanceOf_account1 = await instancePigToken.balanceOf(account1);
+    assert.equal(ar_balanceOf_account0,er_balanceOf_account0);
+    assert.equal(ar_balanceOf_account1,er_balanceOf_account1);
+    console.log(chalk.blue("er_balanceOf_account0 : ",er_balanceOf_account0.toString()));
+    console.log(chalk.blue("er_balanceOf_account1 : ",er_balanceOf_account1.toString()));
+    console.log(chalk.yellow("ar_balanceOf_account0 : ",ar_balanceOf_account0.toString()));
+    console.log(chalk.yellow("ar_balanceOf_account1 : ",ar_balanceOf_account1.toString()));
 }
