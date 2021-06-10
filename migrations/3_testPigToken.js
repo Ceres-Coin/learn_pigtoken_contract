@@ -17,15 +17,15 @@ module.exports = async function(deployer, network, accounts) {
 
     const account0 = accounts[0];
     const account1 = accounts[1];
-    console.log(chalk.red.bold("============= account0 ",account0," ================"));
-    console.log(chalk.red.bold("============= account1 ",account1," ================"));
+    console.log(chalk.blue.bold("============= account0 ",account0," ================"));
+    console.log(chalk.blue.bold("============= account1 ",account1," ================"));
 
 	
     const instancePigToken = await PigToken.deployed()
     console.log("instancePigToken: ",instancePigToken.address);
 
-    console.log(chalk.red.bold("ASSERT Initialize"));
-    assert.equal(1,1,"ASSERTION FAILED");
+    console.log(chalk.green.bold("ASSERT Initialize PASS"));
+    assert.equal(1,1,"ASSERTION FAIL");
 
     // Test Scripts for name() func
     console.log(chalk.green.bold("============= Test Case for name ================"));
@@ -97,12 +97,16 @@ module.exports = async function(deployer, network, accounts) {
 
     // Test Scripts for transfer() func
     console.log(chalk.green.bold("============= Test Case for transfer ================"));
-    const ar_balanceOf_account0_before = (await instancePigToken.balanceOf(account0)).div(BIG9);
-    const ar_balanceOf_account1_before = await instancePigToken.balanceOf(account1).div(BIG9);
+    const er_balanceOf_account1_after = ONE_E_DEC9.div(BIG9);
+    const ar_balanceOf_account0_before = (new BigNumber(await instancePigToken.balanceOf(account0))).div(BIG9);
+    const ar_balanceOf_account1_before = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9);
     await instancePigToken.transfer(account1,ONE_E_DEC9);
-    const ar_balanceOf_account0_after = await instancePigToken.balanceOf(account0).div(BIG9);
-    const ar_balanceOf_account1_after = await instancePigToken.balanceOf(account1).div(BIG9);
+    const ar_balanceOf_account0_after = (new BigNumber(await instancePigToken.balanceOf(account0))).div(BIG9);
+    const ar_balanceOf_account1_after = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9);
 
+    assert.equal(er_balanceOf_account1_after,ar_balanceOf_account1_after,"ASSERTION FAILED");
+
+    console.log(chalk.blue("er_balanceOf_account1_after: ",er_balanceOf_account1_after.toString()));
     console.log(chalk.yellow("ar_balanceOf_account0_before ",ar_balanceOf_account0_before.toString()));
     console.log(chalk.yellow("ar_balanceOf_account1_before ",ar_balanceOf_account1_before.toString()));
     console.log(chalk.yellow("ar_balanceOf_account0_after ",ar_balanceOf_account0_after.toString()));
