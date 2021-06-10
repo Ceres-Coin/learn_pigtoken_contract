@@ -132,13 +132,19 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.blue("er_taxFee : ",er_taxFee.toString()));
     console.log(chalk.yellow("ar_taxFee : ",ar_taxFee.toString()));
 
-    // // Test Scripts for setTaxFeePercent parameter
-    // console.log(chalk.green.bold("============= Test Case for setTaxFeePercent ================"));
-    // // const ersetTaxFeePercent = (new BigNumber(0)).toNumber();
-    // const arsetTaxFeePercent = await instancePigToken.setTaxFeePercent.call();
-    // // assert.equal(arsetTaxFeePercent,ersetTaxFeePercent);
-    // // console.log(chalk.blue("ersetTaxFeePercent : ",ersetTaxFeePercent.toString()));
-    // console.log(chalk.yellow("arsetTaxFeePercent : ",arsetTaxFeePercent.toString()));
+    // Test Scripts for setTaxFeePercent parameter
+    console.log(chalk.green.bold("============= Test Case for setTaxFeePercent ================"));
+    // Before
+    const er_setTaxFeePercent_after = 5;
+    const ar_setTaxFeePercent_before = await instancePigToken._taxFee.call();
+    // Action
+    await instancePigToken.setTaxFeePercent(5);
+    const ar_setTaxFeePercent_after = await instancePigToken._taxFee.call(); 
+    // Assert
+    assert.equal(ar_setTaxFeePercent_after,er_setTaxFeePercent_after);
+    // Print
+    console.log(chalk.yellow("ar_setTaxFeePercent_before : ",ar_setTaxFeePercent_before.toString()));
+    console.log(chalk.yellow("ar_setTaxFeePercent_after : ",ar_setTaxFeePercent_after.toString()));
 
 
 }
