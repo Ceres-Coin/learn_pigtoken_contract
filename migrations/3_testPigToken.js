@@ -111,4 +111,12 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_balanceOf_account1_before ",ar_balanceOf_account1_before.toString()));
     console.log(chalk.yellow("ar_balanceOf_account0_after ",ar_balanceOf_account0_after.toString()));
     console.log(chalk.yellow("ar_balanceOf_account1_after ",ar_balanceOf_account1_after.toString()));
+
+    // Test Scripts for _taxFee parameter
+    console.log(chalk.green.bold("============= Test Case for _taxFee ================"));
+    // const er_taxFee = (new BigNumber(0)).toNumber();
+    const ar_taxFee = await instancePigToken._taxFee.call();
+    // assert.equal(ar_taxFee,er_taxFee);
+    // console.log(chalk.blue("er_taxFee : ",er_taxFee.toString()));
+    console.log(chalk.yellow("ar_taxFee : ",ar_taxFee.toString()));
 }
