@@ -32,4 +32,10 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_symbol : ",ar_symbol.toString()));
 
 
+    // Test Scripts for symbol() func
+    const er_decimals = 9;
+    const ar_decimals = await instancePigToken.decimals()
+    assert.equal(ar_decimals,er_decimals);
+    console.log(chalk.blue("er_decimals : ",er_decimals.toString()));
+    console.log(chalk.yellow("ar_decimals : ",ar_decimals.toString()));
 }
