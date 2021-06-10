@@ -14,9 +14,7 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.red.bold("============= account0 ",account0," ================"));
     console.log(chalk.red.bold("============= account1 ",account1," ================"));
 
-	// Deploy Contracts P2
-	console.log(chalk.red('====== Deploy Contracts P2 ======='));
-
+	
     const instancePigToken = await PigToken.deployed()
     console.log("instancePigToken: ",instancePigToken.address);
 
@@ -24,6 +22,7 @@ module.exports = async function(deployer, network, accounts) {
     assert.equal(1,1,"ASSERTION FAILED");
 
     // Test Scripts for name() func
+    console.log(chalk.green.bold("============= Test Case for name ================"));
     const er_name = "Pig Token";
     const ar_name = (await instancePigToken.name()).toString();
     assert.equal(ar_name,er_name);
@@ -32,6 +31,7 @@ module.exports = async function(deployer, network, accounts) {
 
     
     // Test Scripts for symbol() func
+    console.log(chalk.green.bold("============= Test Case for symbol ================"));
     const er_symbol = "PIG";
     const ar_symbol = (await instancePigToken.symbol()).toString();
     assert.equal(ar_symbol,er_symbol);
@@ -40,6 +40,7 @@ module.exports = async function(deployer, network, accounts) {
 
 
     // Test Scripts for decimals() func
+    console.log(chalk.green.bold("============= Test Case for decimals ================"));
     const er_decimals = 9;
     const ar_decimals = await instancePigToken.decimals()
     assert.equal(ar_decimals,er_decimals);
@@ -47,6 +48,7 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_decimals : ",ar_decimals.toString()));
 
     // Test Scripts for totalSupply() func
+    console.log(chalk.green.bold("============= Test Case for totalSupply ================"));
     const er_totalSupply = (new BigNumber(1000000000 * 10**6 * 10**9)).toNumber();
     const ar_totalSupply = await instancePigToken.totalSupply();
     assert.equal(ar_totalSupply,er_totalSupply);
@@ -54,6 +56,7 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_totalSupply : ",ar_totalSupply.toString()));
 
     // Test Scripts for balanceOf() func
+    console.log(chalk.green.bold("============= Test Case for balanceOf ================"));
     const er_balanceOf_account0 = (new BigNumber(1000000000000000000000000)).toNumber();
     const er_balanceOf_account1 = (new BigNumber(0)).toNumber();
     const ar_balanceOf_account0 = await instancePigToken.balanceOf(account0);
@@ -66,6 +69,7 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_balanceOf_account1 : ",ar_balanceOf_account1.toString()));
 
     // Test Scripts for totalFees() func
+    console.log(chalk.green.bold("============= Test Case for totalFees ================"));
     const er_totalFees = (new BigNumber(0)).toNumber();
     const ar_totalFees = await instancePigToken.totalFees();
     assert.equal(ar_totalFees,er_totalFees);
@@ -73,6 +77,7 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_totalFees : ",ar_totalFees.toString()));
 
     // Test Scripts for isExcludedFromReward() func
+    console.log(chalk.green.bold("============= Test Case for isExcludedFromReward ================"));
     const er_isExcludedFromReward_account0 = false;
     const er_isExcludedFromReward_account1 = false;
     const ar_isExcludedFromReward_account0 = await instancePigToken.isExcludedFromReward(account0);
