@@ -12,5 +12,11 @@ module.exports = async function(deployer, network, accounts) {
     const instancePigToken = await PigToken.deployed()
     console.log("instancePigToken: ",instancePigToken.address);
 
+    const name = await instancePigToken.name();
+    console.log(chalk.blue("ER: name: ",name.toString()));
+
+    const symbol = await instancePigToken.symbol();
+    console.log(chalk.blue("ER: symbol: ",symbol.toString()));
+
 
 }
