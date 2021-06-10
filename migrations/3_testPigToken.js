@@ -7,6 +7,9 @@ const { assert } = require('chai');
 
 const ONE_BILLION_DEC9 = new BigNumber("1000000000e9");
 const ONE_E_DEC9 = new BigNumber("100000000e9");
+const BIG6 = new BigNumber("1e6")
+const BIG9 = new BigNumber("1e9")
+const BIG18 = new BigNumber("1e18")
 
 
 // Make sure Ganache is running beforehand
@@ -94,11 +97,11 @@ module.exports = async function(deployer, network, accounts) {
 
     // Test Scripts for transfer() func
     console.log(chalk.green.bold("============= Test Case for transfer ================"));
-    const ar_balanceOf_account0_before = await instancePigToken.balanceOf(account0);
-    const ar_balanceOf_account1_before = await instancePigToken.balanceOf(account1);
+    const ar_balanceOf_account0_before = (await instancePigToken.balanceOf(account0)).div(BIG9);
+    const ar_balanceOf_account1_before = await instancePigToken.balanceOf(account1).div(BIG9);
     await instancePigToken.transfer(account1,ONE_E_DEC9);
-    const ar_balanceOf_account0_after = await instancePigToken.balanceOf(account0);
-    const ar_balanceOf_account1_after = await instancePigToken.balanceOf(account1);
+    const ar_balanceOf_account0_after = await instancePigToken.balanceOf(account0).div(BIG9);
+    const ar_balanceOf_account1_after = await instancePigToken.balanceOf(account1).div(BIG9);
 
     console.log(chalk.yellow("ar_balanceOf_account0_before ",ar_balanceOf_account0_before.toString()));
     console.log(chalk.yellow("ar_balanceOf_account1_before ",ar_balanceOf_account1_before.toString()));
