@@ -1,4 +1,5 @@
 const Migrations = artifacts.require("Migrations");
+const BigNumber = require('bignumber.js');
 
 const PigToken = artifacts.require("PigToken");
 const chalk = require('chalk');
@@ -38,4 +39,11 @@ module.exports = async function(deployer, network, accounts) {
     assert.equal(ar_decimals,er_decimals);
     console.log(chalk.blue("er_decimals : ",er_decimals.toString()));
     console.log(chalk.yellow("ar_decimals : ",ar_decimals.toString()));
+
+    // Test Scripts for totalSupply() func
+    const er_totalSupply = (new BigNumber(1000000000 * 10**6 * 10**9)).toString();
+    const ar_totalSupply = await instancePigToken.totalSupply()
+    assert.equal(ar_totalSupply,er_totalSupply);
+    console.log(chalk.blue("er_totalSupply : ",er_totalSupply.toString()));
+    console.log(chalk.yellow("ar_totalSupply : ",ar_totalSupply.toString()));
 }
