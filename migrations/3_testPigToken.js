@@ -41,7 +41,7 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_decimals : ",ar_decimals.toString()));
 
     // Test Scripts for totalSupply() func
-    const er_totalSupply = (new BigNumber(1000000000 * 10**6 * 10**9)).toString();
+    const er_totalSupply = (new BigNumber(1000000000 * 10**6 * 10**9)).toNumber();
     const ar_totalSupply = await instancePigToken.totalSupply()
     assert.equal(ar_totalSupply,er_totalSupply);
     console.log(chalk.blue("er_totalSupply : ",er_totalSupply.toString()));
