@@ -20,6 +20,7 @@ module.exports = async function(deployer, network, accounts) {
     const CONTRACT_OWNER = account0;
     const account1 = accounts[1];
     const account2 = accounts[2];
+    const account3 = accounts[3];
     console.log(chalk.blue.bold("============= account0 ",account0," ================"));
     console.log(chalk.blue.bold("============= account1 ",account1," ================"));
     console.log(chalk.blue.bold("============= account2 ",account2," ================"));
@@ -138,7 +139,7 @@ module.exports = async function(deployer, network, accounts) {
     const er_setTaxFeePercent_after = 5;
     const ar_setTaxFeePercent_before = await instancePigToken._taxFee.call();
     // Action
-    await instancePigToken.setTaxFeePercent(5);
+    await instancePigToken.setTaxFeePercent(5,{from: CONTRACT_OWNER});
     const ar_setTaxFeePercent_after = await instancePigToken._taxFee.call(); 
     // Assert
     assert.equal(ar_setTaxFeePercent_after,er_setTaxFeePercent_after);
@@ -146,11 +147,11 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_setTaxFeePercent_before : ",ar_setTaxFeePercent_before.toString()));
     console.log(chalk.yellow("ar_setTaxFeePercent_after : ",ar_setTaxFeePercent_after.toString()));
     // Test For New Tax for transferring
-    await instancePigToken.transfer(account2,ONE_MILLION_DEC9,{ from: account1 });
-    ar_balanceOf_account1_after2 = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9);
-    ar_balanceOf_account2_after2 = (new BigNumber(await instancePigToken.balanceOf(account2))).div(BIG9);
-    console.log(chalk.yellow("ar_balanceOf_account1_after2 ",ar_balanceOf_account1_after2.toString()));
-    console.log(chalk.yellow("ar_balanceOf_account2_after2 ",ar_balanceOf_account2_after2.toString()));
+    await instancePigToken.transfer(account3,ONE_MILLION_DEC9,{ from: account1 });
+    const ar_balanceOf_account1_after3 = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9);
+    const ar_balanceOf_account3_after3 = (new BigNumber(await instancePigToken.balanceOf(account3))).div(BIG9);
+    console.log(chalk.yellow("ar_balanceOf_account1_after3 ",ar_balanceOf_account1_after3.toString()));
+    console.log(chalk.yellow("ar_balanceOf_account3_after3 ",ar_balanceOf_account3_after3.toString()));
 
 
 }
