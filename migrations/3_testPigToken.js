@@ -1,6 +1,7 @@
 const Migrations = artifacts.require("Migrations");
 
 const PigToken = artifacts.require("PigToken");
+const chalk = require('chalk');
 
 
 // Make sure Ganache is running beforehand
