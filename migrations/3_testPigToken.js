@@ -11,8 +11,8 @@ module.exports = async function(deployer, network, accounts) {
 
     const account0 = accounts[0];
     const account1 = accounts[1];
-    console.log(chalk.red.bod("============= account0 ",account0," ================"));
-    console.log(chalk.red.bod("============= account1 ",account1," ================"));
+    console.log(chalk.red.bold("============= account0 ",account0," ================"));
+    console.log(chalk.red.bold("============= account1 ",account1," ================"));
 
 	// Deploy Contracts P2
 	console.log(chalk.red('====== Deploy Contracts P2 ======='));
