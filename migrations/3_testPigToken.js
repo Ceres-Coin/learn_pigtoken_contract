@@ -73,14 +73,14 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_totalFees : ",ar_totalFees.toString()));
 
     // Test Scripts for isExcludedFromReward() func
-    // const er_isExcludedFromReward_account0 = (new BigNumber(1000000000000000000000000)).toNumber();
-    // const er_isExcludedFromReward_account1 = (new BigNumber(0)).toNumber();
+    const er_isExcludedFromReward_account0 = false;
+    const er_isExcludedFromReward_account1 = false;
     const ar_isExcludedFromReward_account0 = await instancePigToken.isExcludedFromReward(account0);
     const ar_isExcludedFromReward_account1 = await instancePigToken.isExcludedFromReward(account1);
-    // assert.equal(ar_isExcludedFromReward_account0,er_isExcludedFromReward_account0);
-    // assert.equal(ar_isExcludedFromReward_account1,er_isExcludedFromReward_account1);
-    // console.log(chalk.blue("er_isExcludedFromReward_account0 : ",er_isExcludedFromReward_account0.toString()));
-    // console.log(chalk.blue("er_isExcludedFromReward_account1 : ",er_isExcludedFromReward_account1.toString()));
+    assert.equal(ar_isExcludedFromReward_account0,er_isExcludedFromReward_account0);
+    assert.equal(ar_isExcludedFromReward_account1,er_isExcludedFromReward_account1);
+    console.log(chalk.blue("er_isExcludedFromReward_account0 : ",er_isExcludedFromReward_account0.toString()));
+    console.log(chalk.blue("er_isExcludedFromReward_account1 : ",er_isExcludedFromReward_account1.toString()));
     console.log(chalk.yellow("ar_isExcludedFromReward_account0 : ",ar_isExcludedFromReward_account0.toString()));
     console.log(chalk.yellow("ar_isExcludedFromReward_account1 : ",ar_isExcludedFromReward_account1.toString()));
 
