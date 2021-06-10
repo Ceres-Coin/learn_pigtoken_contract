@@ -7,6 +7,7 @@ const { assert } = require('chai');
 
 const ONE_BILLION_DEC9 = new BigNumber("1000000000e9");
 const ONE_E_DEC9 = new BigNumber("100000000e9");
+const ONE_MILLION_DEC9 = new BigNumber("1000000e9");
 const BIG6 = new BigNumber("1e6")
 const BIG9 = new BigNumber("1e9")
 const BIG18 = new BigNumber("1e18")
@@ -17,8 +18,10 @@ module.exports = async function(deployer, network, accounts) {
 
     const account0 = accounts[0];
     const account1 = accounts[1];
+    const account2 = accounts[2];
     console.log(chalk.blue.bold("============= account0 ",account0," ================"));
     console.log(chalk.blue.bold("============= account1 ",account1," ================"));
+    console.log(chalk.blue.bold("============= account2 ",account2," ================"));
 
 	
     const instancePigToken = await PigToken.deployed()
@@ -111,6 +114,17 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_balanceOf_account1_before ",ar_balanceOf_account1_before.toString()));
     console.log(chalk.yellow("ar_balanceOf_account0_after ",ar_balanceOf_account0_after.toString()));
     console.log(chalk.yellow("ar_balanceOf_account1_after ",ar_balanceOf_account1_after.toString()));
+
+    await instancePigToken.transfer(account2,ONE_MILLION_DEC9,{ from: account1 });
+
+    const ar_balanceOf_account1_after2 = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9);
+    const ar_balanceOf_account2_after2 = (new BigNumber(await instancePigToken.balanceOf(account2))).div(BIG9);
+
+    console.log(chalk.yellow("ar_balanceOf_account1_after2 ",ar_balanceOf_account1_after2.toString()));
+    console.log(chalk.yellow("ar_balanceOf_account2_after2 ",ar_balanceOf_account2_after2.toString()));
+
+
+
 
     // Test Scripts for _taxFee parameter
     console.log(chalk.green.bold("============= Test Case for _taxFee ================"));
