@@ -836,7 +836,7 @@ contract PigToken is Context, IERC20, Ownable {
 
     function isExcludedFromReward(address account) public view returns (bool) {
         return _isExcluded[account];
-    }
+    } //test scripts done
 
     function totalFees() public view returns (uint256) {
         return _tFeeTotal;

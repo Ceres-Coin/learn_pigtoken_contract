@@ -5,6 +5,9 @@ const PigToken = artifacts.require("PigToken");
 const chalk = require('chalk');
 const { assert } = require('chai');
 
+const ONE_BILLION_DEC9 = new BigNumber("1000000000e9");
+const ONE_E_DEC9 = new BigNumber("100000000e9");
+
 
 // Make sure Ganache is running beforehand
 module.exports = async function(deployer, network, accounts) {
@@ -89,4 +92,16 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("ar_isExcludedFromReward_account0 : ",ar_isExcludedFromReward_account0.toString()));
     console.log(chalk.yellow("ar_isExcludedFromReward_account1 : ",ar_isExcludedFromReward_account1.toString()));
 
+    // Test Scripts for transfer() func
+    console.log(chalk.green.bold("============= Test Case for transfer ================"));
+    const ar_balanceOf_account0_before = await instancePigToken.balanceOf(account0);
+    const ar_balanceOf_account1_before = await instancePigToken.balanceOf(account1);
+    await instancePigToken.transfer(account1,ONE_E_DEC9);
+    const ar_balanceOf_account0_after = await instancePigToken.balanceOf(account0);
+    const ar_balanceOf_account1_after = await instancePigToken.balanceOf(account1);
+
+    console.log(chalk.yellow("ar_balanceOf_account0_before ",ar_balanceOf_account0_before.toString()));
+    console.log(chalk.yellow("ar_balanceOf_account1_before ",ar_balanceOf_account1_before.toString()));
+    console.log(chalk.yellow("ar_balanceOf_account0_after ",ar_balanceOf_account0_after.toString()));
+    console.log(chalk.yellow("ar_balanceOf_account1_after ",ar_balanceOf_account1_after.toString()));
 }
