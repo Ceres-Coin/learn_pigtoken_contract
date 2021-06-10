@@ -785,24 +785,24 @@ contract PigToken is Context, IERC20, Ownable {
 
     function name() public view returns (string memory) {
         return _name;
-    }
+    } //test scripts done
 
     function symbol() public view returns (string memory) {
         return _symbol;
-    }
+    } //test scripts done
 
     function decimals() public view returns (uint8) {
         return _decimals;
-    }
+    } //test scripts done
 
     function totalSupply() public view override returns (uint256) {
         return _tTotal;
-    }
+    }  //test scripts done
 
     function balanceOf(address account) public view override returns (uint256) {
         if (_isExcluded[account]) return _tOwned[account];
         return tokenFromReflection(_rOwned[account]);
-    }
+    } //test scripts done
 
     function transfer(address recipient, uint256 amount) public override returns (bool) {
         _transfer(_msgSender(), recipient, amount);
@@ -840,7 +840,7 @@ contract PigToken is Context, IERC20, Ownable {
 
     function totalFees() public view returns (uint256) {
         return _tFeeTotal;
-    }
+    } //test scripts done
 
     function deliver(uint256 tAmount) public {
         address sender = _msgSender();
