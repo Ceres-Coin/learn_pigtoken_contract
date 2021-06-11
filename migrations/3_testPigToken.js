@@ -13,6 +13,8 @@ const BIG9 = new BigNumber("1e9")
 const BIG18 = new BigNumber("1e18")
 
 
+
+
 // Make sure Ganache is running beforehand
 module.exports = async function(deployer, network, accounts) {
 
@@ -21,9 +23,15 @@ module.exports = async function(deployer, network, accounts) {
     const account1 = accounts[1];
     const account2 = accounts[2];
     const account3 = accounts[3];
+    const account4 = accounts[4];
+    const account5 = accounts[5];
+    const account6 = accounts[6];
+    const account7 = accounts[7];
     console.log(chalk.blue.bold("============= account0 ",account0," ================"));
     console.log(chalk.blue.bold("============= account1 ",account1," ================"));
     console.log(chalk.blue.bold("============= account2 ",account2," ================"));
+
+
 
 	
     const instancePigToken = await PigToken.deployed()
@@ -156,6 +164,21 @@ module.exports = async function(deployer, network, accounts) {
     await instancePigToken.setTaxFeePercent(2,{from: CONTRACT_OWNER});
     const ar_setTaxFeePercent_after2 = await instancePigToken._taxFee.call(); 
     console.log("ar_setTaxFeePercent_after2: ",ar_setTaxFeePercent_after2.toString());
+
+    // Test Scripts for excludeFromFee func
+    console.log(chalk.green.bold("============= Test Case for excludeFromFee ================"));
+    // Action
+    await instancePigToken.excludeFromFee(account1,{from:CONTRACT_OWNER});
+    let balanceOf_account1_after;
+    let balanceOf_account4_after;
+    // Test For transferring for excludeFromFee() func
+    await instancePigToken.transfer(account4,ONE_MILLION_DEC9,{ from: account1 });
+    balanceOf_account1_after = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9);
+    balanceOf_account4_after = (new BigNumber(await instancePigToken.balanceOf(account4))).div(BIG9);
+    // Print
+    console.log(chalk.yellow("balanceOf_account1_after ",balanceOf_account1_after.toString()));
+    console.log(chalk.yellow("balanceOf_account4_after ",balanceOf_account4_after.toString()));
+
 
 
 }
