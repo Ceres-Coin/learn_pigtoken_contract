@@ -155,7 +155,7 @@ module.exports = async function(deployer, network, accounts) {
     // Roll Back        
     await instancePigToken.setTaxFeePercent(2,{from: CONTRACT_OWNER});
     const ar_setTaxFeePercent_after2 = await instancePigToken._taxFee.call(); 
-    console.log("ar_setTaxFeePercent_after2: ",ar_setTaxFeePercent_after2);
+    console.log("ar_setTaxFeePercent_after2: ",ar_setTaxFeePercent_after2.toString());
 
 
 }
