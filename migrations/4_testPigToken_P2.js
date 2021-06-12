@@ -81,9 +81,16 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.yellow("ar_balanceOf_account1_after3 ",ar_balanceOf_account1_after3.toString()));
         console.log(chalk.yellow("ar_balanceOf_account3_after3 ",ar_balanceOf_account3_after3.toString()));
         // Roll Back        
-        await instancePigToken.setLiquidityFeePercent(2,{from: CONTRACT_OWNER});
+        await instancePigToken.setLiquidityFeePercent(3,{from: CONTRACT_OWNER});
         const ar_setLiquidityFeePercent_after2 = await instancePigToken._liquidityFee.call(); 
         console.log("ar_setLiquidityFeePercent_after2: ",ar_setLiquidityFeePercent_after2.toString());
+
+                // Test For New _liquidityFee for transferring AFTER roll back to _liquidityFee = 2
+                await instancePigToken.transfer(account4,ONE_MILLION_DEC9,{ from: account1 });
+                const ar_balanceOf_account1_after4 = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9);
+                const ar_balanceOf_account4_after4 = (new BigNumber(await instancePigToken.balanceOf(account4))).div(BIG9);
+                console.log(chalk.yellow("ar_balanceOf_account1_after4 ",ar_balanceOf_account1_after4.toString()));
+                console.log(chalk.yellow("ar_balanceOf_account4_after4 ",ar_balanceOf_account4_after4.toString()));
 
     
 
