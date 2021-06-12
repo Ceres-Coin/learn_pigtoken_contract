@@ -145,7 +145,17 @@ module.exports = async function(deployer, network, accounts) {
         await instancePigToken.setSwapAndLiquifyEnabled(true);
         console.log(chalk.blue("swapAndLiquifyEnabled: ",(await instancePigToken.swapAndLiquifyEnabled()).toString()));
 
-
+        // Test Scripts for isExcludedFromFee() func
+        console.log(chalk.green.bold("============= Test Case for isExcludedFromFee ================"));
+        // Before
+        const er_isExcludedFromFee_account1 = false;
+        // Action
+        const ar_isExcludedFromFee_account1 = await instancePigToken.isExcludedFromFee(account1);
+        // Assert
+        assert.equal(ar_isExcludedFromFee_account1,er_isExcludedFromFee_account1);
+        // Print
+        console.log(chalk.blue("er_isExcludedFromFee_account1 : ",er_isExcludedFromFee_account1.toString()));
+        console.log(chalk.yellow("ar_isExcludedFromFee_account1 : ",ar_isExcludedFromFee_account1.toString()));
 
 
 }
