@@ -130,7 +130,7 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.yellow("ar_swapAndLiquifyEnabled : ",ar_swapAndLiquifyEnabled.toString()));
 
         // Test Scripts for setSwapAndLiquifyEnabled() to false func
-        console.log(chalk.green.bold("============= Test Case for setSwapAndLiquifyEnabled ================"));
+        console.log(chalk.green.bold("============= Test Case for setSwapAndLiquifyEnabled to false ================"));
         const er_swapAndLiquifyEnabled_after = false
         // Action
         await instancePigToken.setSwapAndLiquifyEnabled(false);
@@ -149,7 +149,7 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.green.bold("============= Test Case for isExcludedFromFee ================"));
         console.log(chalk.blueBright.bold("============= Test Scenario for Account0 ================"));
         // Before
-        const er_isExcludedFromFee_account0 = false;
+        const er_isExcludedFromFee_account0 = true;
         // Action
         const ar_isExcludedFromFee_account0 = await instancePigToken.isExcludedFromFee(account0);
         // Assert
