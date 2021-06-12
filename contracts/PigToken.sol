@@ -903,7 +903,7 @@ contract PigToken is Context, IERC20, Ownable {
     
     function excludeFromFee(address account) public onlyOwner {
         _isExcludedFromFee[account] = true;
-    }
+    } //test scripts done
     
     function includeInFee(address account) public onlyOwner {
         _isExcludedFromFee[account] = false;
@@ -911,7 +911,7 @@ contract PigToken is Context, IERC20, Ownable {
     
     function setTaxFeePercent(uint256 taxFee) external onlyOwner() {
         _taxFee = taxFee;
-    }
+    } //test scripts done
     
     function setLiquidityFeePercent(uint256 liquidityFee) external onlyOwner() {
         _liquidityFee = liquidityFee;
