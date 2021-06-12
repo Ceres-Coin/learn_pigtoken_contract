@@ -129,7 +129,7 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.blue("er_swapAndLiquifyEnabled : ",er_swapAndLiquifyEnabled.toString()));
         console.log(chalk.yellow("ar_swapAndLiquifyEnabled : ",ar_swapAndLiquifyEnabled.toString()));
 
-        // Test Scripts for setSwapAndLiquifyEnabled() func
+        // Test Scripts for setSwapAndLiquifyEnabled() to false func
         console.log(chalk.green.bold("============= Test Case for setSwapAndLiquifyEnabled ================"));
         const er_swapAndLiquifyEnabled_after = false
         // Action
@@ -147,6 +147,18 @@ module.exports = async function(deployer, network, accounts) {
 
         // Test Scripts for isExcludedFromFee() func
         console.log(chalk.green.bold("============= Test Case for isExcludedFromFee ================"));
+        console.log(chalk.blueBright.bold("============= Test Scenario for Account0 ================"));
+        // Before
+        const er_isExcludedFromFee_account0 = false;
+        // Action
+        const ar_isExcludedFromFee_account0 = await instancePigToken.isExcludedFromFee(account0);
+        // Assert
+        assert.equal(ar_isExcludedFromFee_account0,er_isExcludedFromFee_account0);
+        // Print
+        console.log(chalk.blue("er_isExcludedFromFee_account0 : ",er_isExcludedFromFee_account0.toString()));
+        console.log(chalk.yellow("ar_isExcludedFromFee_account0 : ",ar_isExcludedFromFee_account0.toString()));
+
+        console.log(chalk.blueBright.bold("============= Test Scenario for Account1 ================"));
         // Before
         const er_isExcludedFromFee_account1 = false;
         // Action
@@ -156,6 +168,17 @@ module.exports = async function(deployer, network, accounts) {
         // Print
         console.log(chalk.blue("er_isExcludedFromFee_account1 : ",er_isExcludedFromFee_account1.toString()));
         console.log(chalk.yellow("ar_isExcludedFromFee_account1 : ",ar_isExcludedFromFee_account1.toString()));
+
+        console.log(chalk.blueBright.bold("============= Test Scenario for Account2 ================"));
+        // Before
+        const er_isExcludedFromFee_account2 = false;
+        // Action
+        const ar_isExcludedFromFee_account2 = await instancePigToken.isExcludedFromFee(account2);
+        // Assert
+        assert.equal(ar_isExcludedFromFee_account2,er_isExcludedFromFee_account2);
+        // Print
+        console.log(chalk.blue("er_isExcludedFromFee_account2 : ",er_isExcludedFromFee_account2.toString()));
+        console.log(chalk.yellow("ar_isExcludedFromFee_account2 : ",ar_isExcludedFromFee_account2.toString()));
 
 
 }
