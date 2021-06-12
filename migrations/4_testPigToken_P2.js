@@ -18,6 +18,10 @@ const BIG18 = new BigNumber("1e18")
 // Make sure Ganache is running beforehand
 module.exports = async function(deployer, network, accounts) {
 
+    console.log(chalk.green.bold("=================== START Test Scripts 4_testPigToken_P2 ==================="));
+    console.log(chalk.green.bold("=================== START Test Scripts 4_testPigToken_P2 ==================="));
+    console.log(chalk.green.bold("=================== START Test Scripts 4_testPigToken_P2 ==================="));
+
     const account0 = accounts[0];
     const CONTRACT_OWNER = account0;
     const account1 = accounts[1];

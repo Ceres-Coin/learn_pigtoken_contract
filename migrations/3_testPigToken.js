@@ -18,6 +18,9 @@ const BIG18 = new BigNumber("1e18")
 // Make sure Ganache is running beforehand
 module.exports = async function(deployer, network, accounts) {
 
+    console.log(chalk.green.bold("=================== START Test Scripts 3_testPigToken ==================="));
+    console.log(chalk.green.bold("=================== START Test Scripts 3_testPigToken ==================="));
+    console.log(chalk.green.bold("=================== START Test Scripts 3_testPigToken ==================="));
     const account0 = accounts[0];
     const CONTRACT_OWNER = account0;
     const account1 = accounts[1];
@@ -37,7 +40,7 @@ module.exports = async function(deployer, network, accounts) {
     const instancePigToken = await PigToken.deployed()
     console.log("instancePigToken: ",instancePigToken.address);
 
-    console.log(chalk.green.bold("ASSERT Initialize PASS"));
+    
     assert.equal(1,1,"ASSERTION FAIL");
 
     // Test Scripts for name() func
