@@ -31,9 +31,9 @@ module.exports = async function(deployer, network, accounts) {
     const account5 = accounts[5];
     const account6 = accounts[6];
     const account7 = accounts[7];
-    console.log(chalk.blue.bold("============= account0 ",account0," ================"));
-    console.log(chalk.blue.bold("============= account1 ",account1," ================"));
-    console.log(chalk.blue.bold("============= account2 ",account2," ================"));
+    console.log(chalk.blue("============= account0 ",account0," ================"));
+    console.log(chalk.blue("============= account1 ",account1," ================"));
+    console.log(chalk.blue("============= account2 ",account2," ================"));
 
 
 
