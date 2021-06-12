@@ -61,29 +61,29 @@ module.exports = async function(deployer, network, accounts) {
 
 
 
-        // // Test Scripts for setLiquidityFeePercent parameter
-        // console.log(chalk.green.bold("============= Test Case for setLiquidityFeePercent() ================"));
-        // // Before
-        // const er_setLiquidityFeePercent_after = 5;
-        // const ar_setLiquidityFeePercent_before = await instancePigToken._liquidityFee.call();
-        // // Action
-        // await instancePigToken.setLiquidityFeePercent(5,{from: CONTRACT_OWNER});
-        // const ar_setLiquidityFeePercent_after = await instancePigToken._liquidityFee.call(); 
-        // // Assert
-        // assert.equal(ar_setLiquidityFeePercent_after,er_setLiquidityFeePercent_after);
-        // // Print
-        // console.log(chalk.yellow("ar_setLiquidityFeePercent_before : ",ar_setLiquidityFeePercent_before.toString()));
-        // console.log(chalk.yellow("ar_setLiquidityFeePercent_after : ",ar_setLiquidityFeePercent_after.toString()));
-        // // Test For New _liquidityFee for transferring
-        // await instancePigToken.transfer(account3,ONE_MILLION_DEC9,{ from: account1 });
-        // const ar_balanceOf_account1_after3 = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9);
-        // const ar_balanceOf_account3_after3 = (new BigNumber(await instancePigToken.balanceOf(account3))).div(BIG9);
-        // console.log(chalk.yellow("ar_balanceOf_account1_after3 ",ar_balanceOf_account1_after3.toString()));
-        // console.log(chalk.yellow("ar_balanceOf_account3_after3 ",ar_balanceOf_account3_after3.toString()));
-        // // Roll Back        
-        // await instancePigToken.setLiquidityFeePercent(2,{from: CONTRACT_OWNER});
-        // const ar_setLiquidityFeePercent_after2 = await instancePigToken._liquidityFee.call(); 
-        // console.log("ar_setLiquidityFeePercent_after2: ",ar_setLiquidityFeePercent_after2.toString());
+        // Test Scripts for setLiquidityFeePercent parameter
+        console.log(chalk.green.bold("============= Test Case for setLiquidityFeePercent() ================"));
+        // Before
+        const er_setLiquidityFeePercent_after = 5;
+        const ar_setLiquidityFeePercent_before = await instancePigToken._liquidityFee.call();
+        // Action
+        await instancePigToken.setLiquidityFeePercent(5,{from: CONTRACT_OWNER});
+        const ar_setLiquidityFeePercent_after = await instancePigToken._liquidityFee.call(); 
+        // Assert
+        assert.equal(ar_setLiquidityFeePercent_after,er_setLiquidityFeePercent_after);
+        // Print
+        console.log(chalk.yellow("ar_setLiquidityFeePercent_before : ",ar_setLiquidityFeePercent_before.toString()));
+        console.log(chalk.yellow("ar_setLiquidityFeePercent_after : ",ar_setLiquidityFeePercent_after.toString()));
+        // Test For New _liquidityFee for transferring
+        await instancePigToken.transfer(account3,ONE_MILLION_DEC9,{ from: account1 });
+        const ar_balanceOf_account1_after3 = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9);
+        const ar_balanceOf_account3_after3 = (new BigNumber(await instancePigToken.balanceOf(account3))).div(BIG9);
+        console.log(chalk.yellow("ar_balanceOf_account1_after3 ",ar_balanceOf_account1_after3.toString()));
+        console.log(chalk.yellow("ar_balanceOf_account3_after3 ",ar_balanceOf_account3_after3.toString()));
+        // Roll Back        
+        await instancePigToken.setLiquidityFeePercent(2,{from: CONTRACT_OWNER});
+        const ar_setLiquidityFeePercent_after2 = await instancePigToken._liquidityFee.call(); 
+        console.log("ar_setLiquidityFeePercent_after2: ",ar_setLiquidityFeePercent_after2.toString());
 
     
 

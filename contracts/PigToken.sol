@@ -915,7 +915,7 @@ contract PigToken is Context, IERC20, Ownable {
     
     function setLiquidityFeePercent(uint256 liquidityFee) external onlyOwner() {
         _liquidityFee = liquidityFee;
-    }
+    } //test scripts done
    
     function setMaxTxPercent(uint256 maxTxPercent) external onlyOwner() {
         _maxTxAmount = _tTotal.mul(maxTxPercent).div(
