@@ -95,13 +95,19 @@ module.exports = async function(deployer, network, accounts) {
 
         // Test Scripts for _maxTxAmount() func
         console.log(chalk.green.bold("============= Test Case for _maxTxAmount ================"));
-        const er__maxTxAmount = (new BigNumber(5000000 * 10**6 * 10**9)).toNumber();
-        const ar__maxTxAmount = await instancePigToken._maxTxAmount();
+        const er__maxTxAmount = (new BigNumber(5000000 * 10**6 * 10**9)).div(BIG9).toNumber();
+        const ar__maxTxAmount = (new BigNumber(await instancePigToken._maxTxAmount())).div(BIG9).toNumber();
         assert.equal(ar__maxTxAmount,er__maxTxAmount);
         console.log(chalk.blue("er__maxTxAmount : ",er__maxTxAmount.toString()));
         console.log(chalk.yellow("ar__maxTxAmount : ",ar__maxTxAmount.toString()));
 
-    
+        // Test Scripts for totalSupply() func
+        console.log(chalk.green.bold("============= Test Case for totalSupply ================"));
+        const er_totalSupply = (new BigNumber(1000000000 * 10**6 * 10**9)).div(BIG9).toNumber();
+        const ar_totalSupply = (new BigNumber(await instancePigToken.totalSupply())).div(BIG9).toNumber();
+        assert.equal(ar_totalSupply,er_totalSupply);
+        console.log(chalk.blue("er_totalSupply : ",er_totalSupply.toString()));
+        console.log(chalk.yellow("ar_totalSupply : ",ar_totalSupply.toString()));
 
 
 }
