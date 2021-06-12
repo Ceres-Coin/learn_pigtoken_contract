@@ -140,6 +140,8 @@ module.exports = async function(deployer, network, accounts) {
         // Print
         console.log(chalk.blue("er_swapAndLiquifyEnabled_after : ",er_swapAndLiquifyEnabled_after.toString()));
         console.log(chalk.yellow("ar_swapAndLiquifyEnabled_after : ",ar_swapAndLiquifyEnabled_after.toString()));
+        // Rollback
+        await instancePigToken.setSwapAndLiquifyEnabled(true);
 
 
 
