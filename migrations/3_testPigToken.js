@@ -180,5 +180,4 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.yellow("balanceOf_account4_after ",balanceOf_account4_after.toString()));
 
 
-
 }
