@@ -42,6 +42,7 @@ module.exports = async function(deployer, network, accounts) {
     assert.equal(1,1,"ASSERTION FAIL");
 
     // Preparequisites
+    console.log(chalk.green.bold("===================  4_testPigToken_P2 Prepare Period==================="));
         // Test Scripts for transfer() func
         console.log(chalk.green.bold("============= Test Case for transfer ================"));
         const er_balanceOf_account1_after = ONE_E_DEC9.div(BIG9);
@@ -58,6 +59,14 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.yellow("ar_balanceOf_account1_before ",ar_balanceOf_account1_before.toString()));
         console.log(chalk.yellow("ar_balanceOf_account0_after ",ar_balanceOf_account0_after.toString()));
         console.log(chalk.yellow("ar_balanceOf_account1_after ",ar_balanceOf_account1_after.toString()));
+
+        // Test Scripts for totalSupply() func
+        console.log(chalk.green.bold("============= Test Case for totalSupply ================"));
+        const er_totalSupply = (new BigNumber(1000000000 * 10**6 * 10**9)).div(BIG9).toNumber();
+        const ar_totalSupply = (new BigNumber(await instancePigToken.totalSupply())).div(BIG9).toNumber();
+        assert.equal(ar_totalSupply,er_totalSupply);
+        console.log(chalk.blue("er_totalSupply : ",er_totalSupply.toString()));
+        console.log(chalk.yellow("ar_totalSupply : ",ar_totalSupply.toString()));
 
 
 
@@ -101,13 +110,26 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.blue("er__maxTxAmount : ",er__maxTxAmount.toString()));
         console.log(chalk.yellow("ar__maxTxAmount : ",ar__maxTxAmount.toString()));
 
-        // Test Scripts for totalSupply() func
-        console.log(chalk.green.bold("============= Test Case for totalSupply ================"));
-        const er_totalSupply = (new BigNumber(1000000000 * 10**6 * 10**9)).div(BIG9).toNumber();
-        const ar_totalSupply = (new BigNumber(await instancePigToken.totalSupply())).div(BIG9).toNumber();
-        assert.equal(ar_totalSupply,er_totalSupply);
-        console.log(chalk.blue("er_totalSupply : ",er_totalSupply.toString()));
-        console.log(chalk.yellow("ar_totalSupply : ",ar_totalSupply.toString()));
+        // COMMENT BELOW CODE
+        
+        // // Test Scripts for setMaxTxPercent() func
+        // console.log(chalk.green.bold("============= Test Case for setMaxTxPercent ================"));
+        // await instancePigToken.setMaxTxPercent(10);
+        // // const er_setMaxTxPercent = (new BigNumber(5000000 * 10**6 * 10**9)).div(BIG9).toNumber();
+        // const ar_setMaxTxPercent_after = (new BigNumber(await instancePigToken._maxTxAmount())).div(BIG9).toNumber();
+        // // assert.equal(ar_setMaxTxPercent,er_setMaxTxPercent);
+        // // console.log(chalk.blue("er_setMaxTxPercent : ",er_setMaxTxPercent.toString()));
+        // console.log(chalk.yellow("ar_setMaxTxPercent_after : ",ar_setMaxTxPercent_after.toString()));
+
+        // Test Scripts for swapAndLiquifyEnabled() func
+        console.log(chalk.green.bold("============= Test Case for swapAndLiquifyEnabled ================"));
+        const er_swapAndLiquifyEnabled = true
+        const ar_swapAndLiquifyEnabled = await instancePigToken.swapAndLiquifyEnabled();
+        assert.equal(ar_swapAndLiquifyEnabled,er_swapAndLiquifyEnabled);
+        console.log(chalk.blue("er_swapAndLiquifyEnabled : ",er_swapAndLiquifyEnabled.toString()));
+        console.log(chalk.yellow("ar_swapAndLiquifyEnabled : ",ar_swapAndLiquifyEnabled.toString()));
+
+
 
 
 }

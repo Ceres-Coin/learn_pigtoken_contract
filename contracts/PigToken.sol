@@ -921,7 +921,7 @@ contract PigToken is Context, IERC20, Ownable {
         _maxTxAmount = _tTotal.mul(maxTxPercent).div(
             10**2
         );
-    }
+    } //test scripts done
 
     function setSwapAndLiquifyEnabled(bool _enabled) public onlyOwner {
         swapAndLiquifyEnabled = _enabled;
