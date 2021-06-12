@@ -745,7 +745,7 @@ contract PigToken is Context, IERC20, Ownable {
     address public immutable uniswapV2Pair;
     
     bool inSwapAndLiquify;
-    bool public swapAndLiquifyEnabled = true;
+    bool public swapAndLiquifyEnabled = true; //test scripts done
     
     uint256 public _maxTxAmount = 5000000 * 10**6 * 10**9;
     uint256 private numTokensSellToAddToLiquidity = 500000 * 10**6 * 10**9;
@@ -926,7 +926,7 @@ contract PigToken is Context, IERC20, Ownable {
     function setSwapAndLiquifyEnabled(bool _enabled) public onlyOwner {
         swapAndLiquifyEnabled = _enabled;
         emit SwapAndLiquifyEnabledUpdated(_enabled);
-    }
+    } //test scripts done
     
      //to recieve ETH from uniswapV2Router when swaping
     receive() external payable {}

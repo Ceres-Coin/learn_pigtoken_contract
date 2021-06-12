@@ -111,7 +111,7 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.yellow("ar__maxTxAmount : ",ar__maxTxAmount.toString()));
 
         // COMMENT BELOW CODE
-        
+
         // // Test Scripts for setMaxTxPercent() func
         // console.log(chalk.green.bold("============= Test Case for setMaxTxPercent ================"));
         // await instancePigToken.setMaxTxPercent(10);
@@ -128,6 +128,18 @@ module.exports = async function(deployer, network, accounts) {
         assert.equal(ar_swapAndLiquifyEnabled,er_swapAndLiquifyEnabled);
         console.log(chalk.blue("er_swapAndLiquifyEnabled : ",er_swapAndLiquifyEnabled.toString()));
         console.log(chalk.yellow("ar_swapAndLiquifyEnabled : ",ar_swapAndLiquifyEnabled.toString()));
+
+        // Test Scripts for setSwapAndLiquifyEnabled() func
+        console.log(chalk.green.bold("============= Test Case for setSwapAndLiquifyEnabled ================"));
+        const er_swapAndLiquifyEnabled_after = false
+        // Action
+        await instancePigToken.setSwapAndLiquifyEnabled(false);
+        // Assertion
+        const ar_swapAndLiquifyEnabled_after = await instancePigToken.swapAndLiquifyEnabled();
+        assert.equal(ar_swapAndLiquifyEnabled_after,er_swapAndLiquifyEnabled_after);
+        // Print
+        console.log(chalk.blue("er_swapAndLiquifyEnabled_after : ",er_swapAndLiquifyEnabled_after.toString()));
+        console.log(chalk.yellow("ar_swapAndLiquifyEnabled_after : ",ar_swapAndLiquifyEnabled_after.toString()));
 
 
 
