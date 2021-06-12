@@ -1011,7 +1011,7 @@ contract PigToken is Context, IERC20, Ownable {
     
     function isExcludedFromFee(address account) public view returns(bool) {
         return _isExcludedFromFee[account];
-    }
+    } // test scripts done
 
     function _approve(address owner, address spender, uint256 amount) private {
         require(owner != address(0), "ERC20: approve from the zero address");
