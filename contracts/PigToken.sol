@@ -731,14 +731,14 @@ contract PigToken is Context, IERC20, Ownable {
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
 
-    string private _name = "Pig Token";
-    string private _symbol = "PIG";
-    uint8 private _decimals = 9;
+    string private _name = "Pig Token"; //TEST CASE DONE
+    string private _symbol = "PIG"; //TEST CASE DONE
+    uint8 private _decimals = 9; //TEST CASE DONE
     
-    uint256 public _taxFee = 2;
+    uint256 public _taxFee = 2;  //TEST CASE DONE
     uint256 private _previousTaxFee = _taxFee;
     
-    uint256 public _liquidityFee = 3;
+    uint256 public _liquidityFee = 3; //TEST CASE DONE
     uint256 private _previousLiquidityFee = _liquidityFee;
 
     IUniswapV2Router02 public immutable uniswapV2Router;
@@ -747,7 +747,7 @@ contract PigToken is Context, IERC20, Ownable {
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled = true; //test scripts done
     
-    uint256 public _maxTxAmount = 5000000 * 10**6 * 10**9;
+    uint256 public _maxTxAmount = 5000000 * 10**6 * 10**9; //test scripts done
     uint256 private numTokensSellToAddToLiquidity = 500000 * 10**6 * 10**9;
     
     event MinTokensBeforeSwapUpdated(uint256 minTokensBeforeSwap);
@@ -783,64 +783,90 @@ contract PigToken is Context, IERC20, Ownable {
         emit Transfer(address(0), _msgSender(), _tTotal);
     }
 
+    //test scripts done
     function name() public view returns (string memory) {
         return _name;
-    } //test scripts done
+    } 
 
+    //test scripts done
     function symbol() public view returns (string memory) {
         return _symbol;
-    } //test scripts done
+    } 
 
+    //test scripts done
     function decimals() public view returns (uint8) {
         return _decimals;
-    } //test scripts done
+    } 
 
+    //test scripts done
     function totalSupply() public view override returns (uint256) {
         return _tTotal;
-    }  //test scripts done
+    }  
 
+    //test scripts done
     function balanceOf(address account) public view override returns (uint256) {
         if (_isExcluded[account]) return _tOwned[account];
         return tokenFromReflection(_rOwned[account]);
-    } //test scripts done
+    } 
 
+    // Basic Test Cases Done
+    // TO DO: ADD Advanced Test Cases
+    // TO DO: ADD Advanced Test Cases
+    // TO DO: ADD Advanced Test Cases
     function transfer(address recipient, uint256 amount) public override returns (bool) {
         _transfer(_msgSender(), recipient, amount);
         return true;
     }
 
+    // TO DO: ADD Test Cases
+    // TO DO: ADD Test Cases
+    // TO DO: ADD Test Cases
     function allowance(address owner, address spender) public view override returns (uint256) {
         return _allowances[owner][spender];
     }
 
+    // TO DO: ADD Test Cases
+    // TO DO: ADD Test Cases
+    // TO DO: ADD Test Cases
     function approve(address spender, uint256 amount) public override returns (bool) {
         _approve(_msgSender(), spender, amount);
         return true;
     }
 
+    // TO DO: ADD Test Cases
+    // TO DO: ADD Test Cases
+    // TO DO: ADD Test Cases
     function transferFrom(address sender, address recipient, uint256 amount) public override returns (bool) {
         _transfer(sender, recipient, amount);
         _approve(sender, _msgSender(), _allowances[sender][_msgSender()].sub(amount, "ERC20: transfer amount exceeds allowance"));
         return true;
     }
 
+    // TO DO: ADD Test Cases
+    // TO DO: ADD Test Cases
+    // TO DO: ADD Test Cases
     function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {
         _approve(_msgSender(), spender, _allowances[_msgSender()][spender].add(addedValue));
         return true;
     }
 
+    // TO DO: ADD Test Cases
+    // TO DO: ADD Test Cases
+    // TO DO: ADD Test Cases
     function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
         _approve(_msgSender(), spender, _allowances[_msgSender()][spender].sub(subtractedValue, "ERC20: decreased allowance below zero"));
         return true;
     }
 
+    //test scripts done
     function isExcludedFromReward(address account) public view returns (bool) {
         return _isExcluded[account];
-    } //test scripts done
+    } 
 
+    //test scripts done
     function totalFees() public view returns (uint256) {
         return _tFeeTotal;
-    } //test scripts done
+    } 
 
     function deliver(uint256 tAmount) public {
         address sender = _msgSender();

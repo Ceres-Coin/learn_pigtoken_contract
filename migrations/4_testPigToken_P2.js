@@ -70,6 +70,8 @@ module.exports = async function(deployer, network, accounts) {
 
 
 
+
+
         // Test Scripts for setLiquidityFeePercent parameter
         console.log(chalk.green.bold("============= Test Case for setLiquidityFeePercent() ================"));
         // Before
@@ -180,5 +182,12 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.blue("er_isExcludedFromFee_account2 : ",er_isExcludedFromFee_account2.toString()));
         console.log(chalk.yellow("ar_isExcludedFromFee_account2 : ",ar_isExcludedFromFee_account2.toString()));
 
+                // Test Scripts for _liquidityFee
+                console.log(chalk.green.bold("============= Test Case for _liquidityFee ================"));
+                const er__liquidityFee = 3
+                const ar__liquidityFee = (new BigNumber(await instancePigToken._liquidityFee.call())).toNumber();
+                assert.equal(ar__liquidityFee,er__liquidityFee);
+                console.log(chalk.blue("er__liquidityFee : ",er__liquidityFee.toString()));
+                console.log(chalk.yellow("ar__liquidityFee : ",ar__liquidityFee.toString()));
 
 }
