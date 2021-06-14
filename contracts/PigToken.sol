@@ -742,7 +742,7 @@ contract PigToken is Context, IERC20, Ownable {
     uint256 private _previousLiquidityFee = _liquidityFee;
 
     IUniswapV2Router02 public immutable uniswapV2Router;
-    address public immutable uniswapV2Pair;
+    address public immutable uniswapV2Pair; //TEST CASE DONE
     
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled = true; //test scripts done

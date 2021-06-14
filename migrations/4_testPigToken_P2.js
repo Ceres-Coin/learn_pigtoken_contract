@@ -182,12 +182,20 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.blue("er_isExcludedFromFee_account2 : ",er_isExcludedFromFee_account2.toString()));
         console.log(chalk.yellow("ar_isExcludedFromFee_account2 : ",ar_isExcludedFromFee_account2.toString()));
 
-                // Test Scripts for _liquidityFee
-                console.log(chalk.green.bold("============= Test Case for _liquidityFee ================"));
-                const er__liquidityFee = 3
-                const ar__liquidityFee = (new BigNumber(await instancePigToken._liquidityFee.call())).toNumber();
-                assert.equal(ar__liquidityFee,er__liquidityFee);
-                console.log(chalk.blue("er__liquidityFee : ",er__liquidityFee.toString()));
-                console.log(chalk.yellow("ar__liquidityFee : ",ar__liquidityFee.toString()));
+        // Test Scripts for _liquidityFee
+        console.log(chalk.green.bold("============= Test Case for _liquidityFee ================"));
+        const er__liquidityFee = 3
+        const ar__liquidityFee = (new BigNumber(await instancePigToken._liquidityFee.call())).toNumber();
+        assert.equal(ar__liquidityFee,er__liquidityFee);
+        console.log(chalk.blue("er__liquidityFee : ",er__liquidityFee.toString()));
+        console.log(chalk.yellow("ar__liquidityFee : ",ar__liquidityFee.toString()));
+
+                // Test Scripts for uniswapV2Pair
+                console.log(chalk.green.bold("============= Test Case for uniswapV2Pair ================"));
+                // const er_uniswapV2Pair = 3
+                const ar_uniswapV2Pair = await instancePigToken.uniswapV2Pair.call();
+                // assert.equal(ar_uniswapV2Pair,er_uniswapV2Pair);
+                // console.log(chalk.blue("er_uniswapV2Pair : ",er_uniswapV2Pair.toString()));
+                console.log(chalk.yellow("ar_uniswapV2Pair : ",ar_uniswapV2Pair.toString()));
 
 }
