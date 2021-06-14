@@ -851,6 +851,9 @@ contract PigToken is Context, IERC20, Ownable {
         _tFeeTotal = _tFeeTotal.add(tAmount);
     }
 
+    // TO DO: add test scripts
+    // TO DO: add test scripts
+    // TO DO: add test scripts
     function reflectionFromToken(uint256 tAmount, bool deductTransferFee) public view returns(uint256) {
         require(tAmount <= _tTotal, "Amount must be less than supply");
         if (!deductTransferFee) {
@@ -862,12 +865,18 @@ contract PigToken is Context, IERC20, Ownable {
         }
     }
 
+    // TO DO: add test scripts
+    // TO DO: add test scripts
+    // TO DO: add test scripts
     function tokenFromReflection(uint256 rAmount) public view returns(uint256) {
         require(rAmount <= _rTotal, "Amount must be less than total reflections");
         uint256 currentRate =  _getRate();
         return rAmount.div(currentRate);
     }
 
+    // TO DO: add test scripts
+    // TO DO: add test scripts
+    // TO DO: add test scripts
     function excludeFromReward(address account) public onlyOwner() {
         // require(account != 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, 'We can not exclude Uniswap router.');
         require(!_isExcluded[account], "Account is already excluded");
@@ -878,6 +887,9 @@ contract PigToken is Context, IERC20, Ownable {
         _excluded.push(account);
     }
 
+    // TO DO: add test scripts
+    // TO DO: add test scripts
+    // TO DO: add test scripts
     function includeInReward(address account) external onlyOwner() {
         require(_isExcluded[account], "Account is already excluded");
         for (uint256 i = 0; i < _excluded.length; i++) {
@@ -901,32 +913,37 @@ contract PigToken is Context, IERC20, Ownable {
         emit Transfer(sender, recipient, tTransferAmount);
     }
     
+    //test scripts done
     function excludeFromFee(address account) public onlyOwner {
         _isExcludedFromFee[account] = true;
-    } //test scripts done
+    } 
     
     function includeInFee(address account) public onlyOwner {
         _isExcludedFromFee[account] = false;
     }
     
+    //test scripts done
     function setTaxFeePercent(uint256 taxFee) external onlyOwner() {
         _taxFee = taxFee;
-    } //test scripts done
+    } 
     
+    //test scripts done
     function setLiquidityFeePercent(uint256 liquidityFee) external onlyOwner() {
         _liquidityFee = liquidityFee;
-    } //test scripts done
+    } 
    
+    //test scripts done
     function setMaxTxPercent(uint256 maxTxPercent) external onlyOwner() {
         _maxTxAmount = _tTotal.mul(maxTxPercent).div(
             10**2
         );
-    } //test scripts done
+    } 
 
+    //test scripts done
     function setSwapAndLiquifyEnabled(bool _enabled) public onlyOwner {
         swapAndLiquifyEnabled = _enabled;
         emit SwapAndLiquifyEnabledUpdated(_enabled);
-    } //test scripts done
+    } 
     
      //to recieve ETH from uniswapV2Router when swaping
     receive() external payable {}
