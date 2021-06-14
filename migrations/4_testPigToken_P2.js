@@ -190,12 +190,20 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.blue("er__liquidityFee : ",er__liquidityFee.toString()));
         console.log(chalk.yellow("ar__liquidityFee : ",ar__liquidityFee.toString()));
 
-                // Test Scripts for uniswapV2Pair
-                console.log(chalk.green.bold("============= Test Case for uniswapV2Pair ================"));
-                // const er_uniswapV2Pair = 3
-                const ar_uniswapV2Pair = await instancePigToken.uniswapV2Pair.call();
-                // assert.equal(ar_uniswapV2Pair,er_uniswapV2Pair);
-                // console.log(chalk.blue("er_uniswapV2Pair : ",er_uniswapV2Pair.toString()));
-                console.log(chalk.yellow("ar_uniswapV2Pair : ",ar_uniswapV2Pair.toString()));
+        // Test Scripts for uniswapV2Pair
+        console.log(chalk.green.bold("============= Test Case for uniswapV2Pair ================"));
+        // const er_uniswapV2Pair = 3
+        const ar_uniswapV2Pair = await instancePigToken.uniswapV2Pair.call();
+        // assert.equal(ar_uniswapV2Pair,er_uniswapV2Pair);
+        // console.log(chalk.blue("er_uniswapV2Pair : ",er_uniswapV2Pair.toString()));
+        console.log(chalk.yellow("ar_uniswapV2Pair : ",ar_uniswapV2Pair.toString()));
 
+
+        // Test Scripts for totalFees() func
+        console.log(chalk.green.bold("============= Test Case for totalFees ================"));
+        // const er_totalFees = (new BigNumber(0)).toNumber();
+        const ar_totalFees = (new BigNumber(await instancePigToken.totalFees())).div(BIG9).toNumber();
+        // assert.equal(ar_totalFees,er_totalFees);
+        // console.log(chalk.blue("er_totalFees : ",er_totalFees.toString()));
+        console.log(chalk.yellow("ar_totalFees : ",ar_totalFees.toString()));
 }
