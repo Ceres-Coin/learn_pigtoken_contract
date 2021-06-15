@@ -1000,7 +1000,7 @@ contract PigToken is Context, IERC20, Ownable {
         return (rAmount, rTransferAmount, rFee);
     }
 
-    function _getRate() private view returns(uint256) {
+    function _getRate() public view returns(uint256) {
         (uint256 rSupply, uint256 tSupply) = _getCurrentSupply();
         return rSupply.div(tSupply);
     }
