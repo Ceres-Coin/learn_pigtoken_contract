@@ -721,9 +721,9 @@ contract PigToken is Context, IERC20, Ownable {
     mapping (address => uint256) public _tOwned;
     mapping (address => mapping (address => uint256)) private _allowances;
 
-    mapping (address => bool) private _isExcludedFromFee;
+    mapping (address => bool) public _isExcludedFromFee;
 
-    mapping (address => bool) private _isExcluded;
+    mapping (address => bool) public _isExcluded;
     address[] public _excluded;
    
     uint256 public constant MAX = ~uint256(0);
