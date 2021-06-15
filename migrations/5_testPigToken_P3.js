@@ -56,10 +56,14 @@ module.exports = async function(deployer, network, accounts) {
 
         // Test Scripts for balanceOf() func
         console.log(chalk.green.bold("============= Test Case for balanceOf ================"));
+        const contract_address = "0x7829f609E893c5c00808FA1926899aCBb462AE86";
         const ar_balanceOf_account0 = (new BigNumber(await instancePigToken.balanceOf(account0))).div(BIG9).toNumber();
         const ar_balanceOf_account1 = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9).toNumber();
         const ar_balanceOf_account2 = (new BigNumber(await instancePigToken.balanceOf(account2))).div(BIG9).toNumber();
+        const ar_balanceOf_account_contract = (new BigNumber(await instancePigToken.balanceOf(contract_address))).div(BIG9).toNumber();
         console.log(chalk.yellow("ar_balanceOf_account0 : ",ar_balanceOf_account0.toString()));
         console.log(chalk.yellow("ar_balanceOf_account1 : ",ar_balanceOf_account1.toString()));
         console.log(chalk.yellow("ar_balanceOf_account2 : ",ar_balanceOf_account2.toString()));
+        console.log(chalk.yellow("ar_balanceOf_account_contract : ",ar_balanceOf_account_contract.toString()));
+    
 }
