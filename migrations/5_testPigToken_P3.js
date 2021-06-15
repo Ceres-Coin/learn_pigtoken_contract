@@ -36,7 +36,7 @@ module.exports = async function(deployer, network, accounts) {
     console.log(chalk.blue("============= account2 ",account2," ================"));
 
     const instancePigToken = await PigToken.deployed()
-    console.log("instancePigToken: ",instancePigToken.address);
+    console.log(chalk.redBright.bold("instancePigToken: ",instancePigToken.address));
 
     console.log(chalk.green.bold("ASSERT Initialize PASS"));
     assert.equal(1,1,"ASSERTION FAIL");
@@ -88,4 +88,13 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.yellow("ar_get_rOwned_account2 : ",ar_get_rOwned_account2.toString()));
         console.log(chalk.yellow("ar_get_rOwned_account_contract : ",ar_get_rOwned_account_contract.toString()));
     
+
+        // const ar_setLiquidityFeePercent_before = await instancePigToken._liquidityFee.call();
+        // // Action
+        // await instancePigToken.setLiquidityFeePercent(10,{from: CONTRACT_OWNER});
+        // const ar_setLiquidityFeePercent_after = await instancePigToken._liquidityFee.call(); 
+        // // Print
+        // console.log(chalk.yellow("ar_setLiquidityFeePercent_before : ",ar_setLiquidityFeePercent_before.toString()));
+        // console.log(chalk.yellow("ar_setLiquidityFeePercent_after : ",ar_setLiquidityFeePercent_after.toString()));
+ 
 }
