@@ -717,19 +717,19 @@ contract PigToken is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
 
-    mapping (address => uint256) private _rOwned;
-    mapping (address => uint256) private _tOwned;
+    mapping (address => uint256) public _rOwned;
+    mapping (address => uint256) public _tOwned;
     mapping (address => mapping (address => uint256)) private _allowances;
 
     mapping (address => bool) private _isExcludedFromFee;
 
     mapping (address => bool) private _isExcluded;
-    address[] private _excluded;
+    address[] public _excluded;
    
-    uint256 private constant MAX = ~uint256(0);
-    uint256 private _tTotal = 1000000000 * 10**6 * 10**9;
-    uint256 private _rTotal = (MAX - (MAX % _tTotal));
-    uint256 private _tFeeTotal;
+    uint256 public constant MAX = ~uint256(0);
+    uint256 public _tTotal = 1000000000 * 10**6 * 10**9;
+    uint256 public _rTotal = (MAX - (MAX % _tTotal));
+    uint256 public _tFeeTotal;
 
     string private _name = "Pig Token"; //TEST CASE DONE
     string private _symbol = "PIG"; //TEST CASE DONE
