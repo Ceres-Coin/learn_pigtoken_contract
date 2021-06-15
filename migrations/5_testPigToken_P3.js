@@ -49,8 +49,17 @@ module.exports = async function(deployer, network, accounts) {
     // console.log(chalk.blue("er_totalFees : ",er_totalFees.toString()));
     console.log(chalk.yellow("ar_totalFees : ",ar_totalFees.toString()));
 
-        // Test Scripts for _getRate() func
-        console.log(chalk.green.bold("============= Test Case for _getRate ================"));
-        const ar_getRate = await instancePigToken._getRate();
-        console.log(chalk.yellow("ar_getRate : ",ar_getRate.toString()));
+    // Test Scripts for _getRate() func
+    console.log(chalk.green.bold("============= Test Case for _getRate ================"));
+    const ar_getRate = await instancePigToken._getRate();
+    console.log(chalk.yellow("ar_getRate : ",ar_getRate.toString()));
+
+        // Test Scripts for balanceOf() func
+        console.log(chalk.green.bold("============= Test Case for balanceOf ================"));
+        const ar_balanceOf_account0 = (new BigNumber(await instancePigToken.balanceOf(account0))).div(BIG9).toNumber();
+        const ar_balanceOf_account1 = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9).toNumber();
+        const ar_balanceOf_account2 = (new BigNumber(await instancePigToken.balanceOf(account2))).div(BIG9).toNumber();
+        console.log(chalk.yellow("ar_balanceOf_account0 : ",ar_balanceOf_account0.toString()));
+        console.log(chalk.yellow("ar_balanceOf_account1 : ",ar_balanceOf_account1.toString()));
+        console.log(chalk.yellow("ar_balanceOf_account2 : ",ar_balanceOf_account2.toString()));
 }

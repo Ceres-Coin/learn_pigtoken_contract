@@ -1000,6 +1000,7 @@ contract PigToken is Context, IERC20, Ownable {
         return (rAmount, rTransferAmount, rFee);
     }
 
+    // TEST CASES DONE
     function _getRate() public view returns(uint256) {
         (uint256 rSupply, uint256 tSupply) = _getCurrentSupply();
         return rSupply.div(tSupply);
@@ -1052,9 +1053,10 @@ contract PigToken is Context, IERC20, Ownable {
         _liquidityFee = _previousLiquidityFee;
     }
     
+    // test scripts done
     function isExcludedFromFee(address account) public view returns(bool) {
         return _isExcludedFromFee[account];
-    } // test scripts done
+    } 
 
     function _approve(address owner, address spender, uint256 amount) private {
         require(owner != address(0), "ERC20: approve from the zero address");
