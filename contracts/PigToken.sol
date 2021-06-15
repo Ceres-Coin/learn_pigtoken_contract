@@ -783,6 +783,15 @@ contract PigToken is Context, IERC20, Ownable {
         emit Transfer(address(0), _msgSender(), _tTotal);
     }
 
+    
+    function get_tOwned(address _address) public view returns (uint256) {
+        return _tOwned[_address];
+    }
+
+    function get_rOwned(address _address) public view returns (uint256) {
+        return _rOwned[_address];
+    } 
+
     //test scripts done
     function name() public view returns (string memory) {
         return _name;

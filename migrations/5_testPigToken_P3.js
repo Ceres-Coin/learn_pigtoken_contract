@@ -54,9 +54,9 @@ module.exports = async function(deployer, network, accounts) {
     const ar_getRate = await instancePigToken._getRate();
     console.log(chalk.yellow("ar_getRate : ",ar_getRate.toString()));
 
+    const contract_address = "0xec5a98e99b5e1e2232c17e65f1de21c798ec4628";
         // Test Scripts for balanceOf() func
         console.log(chalk.green.bold("============= Test Case for balanceOf ================"));
-        const contract_address = "0x7829f609E893c5c00808FA1926899aCBb462AE86";
         const ar_balanceOf_account0 = (new BigNumber(await instancePigToken.balanceOf(account0))).div(BIG9).toNumber();
         const ar_balanceOf_account1 = (new BigNumber(await instancePigToken.balanceOf(account1))).div(BIG9).toNumber();
         const ar_balanceOf_account2 = (new BigNumber(await instancePigToken.balanceOf(account2))).div(BIG9).toNumber();
@@ -65,5 +65,27 @@ module.exports = async function(deployer, network, accounts) {
         console.log(chalk.yellow("ar_balanceOf_account1 : ",ar_balanceOf_account1.toString()));
         console.log(chalk.yellow("ar_balanceOf_account2 : ",ar_balanceOf_account2.toString()));
         console.log(chalk.yellow("ar_balanceOf_account_contract : ",ar_balanceOf_account_contract.toString()));
+
+        // Test Scripts for get_tOwned() func
+        console.log(chalk.green.bold("============= Test Case for get_tOwned ================"));
+        const ar_get_tOwned_account0 = (new BigNumber(await instancePigToken.get_tOwned(account0))).div(BIG9).toNumber();
+        const ar_get_tOwned_account1 = (new BigNumber(await instancePigToken.get_tOwned(account1))).div(BIG9).toNumber();
+        const ar_get_tOwned_account2 = (new BigNumber(await instancePigToken.get_tOwned(account2))).div(BIG9).toNumber();
+        const ar_get_tOwned_account_contract = (new BigNumber(await instancePigToken.get_tOwned(contract_address))).div(BIG9).toNumber();
+        console.log(chalk.yellow("ar_get_tOwned_account0 : ",ar_get_tOwned_account0.toString()));
+        console.log(chalk.yellow("ar_get_tOwned_account1 : ",ar_get_tOwned_account1.toString()));
+        console.log(chalk.yellow("ar_get_tOwned_account2 : ",ar_get_tOwned_account2.toString()));
+        console.log(chalk.yellow("ar_get_tOwned_account_contract : ",ar_get_tOwned_account_contract.toString()));
+
+        // Test Scripts for get_rOwned() func
+        console.log(chalk.green.bold("============= Test Case for get_rOwned ================"));
+        const ar_get_rOwned_account0 = (new BigNumber(await instancePigToken.get_rOwned(account0))).div(BIG9).toNumber();
+        const ar_get_rOwned_account1 = (new BigNumber(await instancePigToken.get_rOwned(account1))).div(BIG9).toNumber();
+        const ar_get_rOwned_account2 = (new BigNumber(await instancePigToken.get_rOwned(account2))).div(BIG9).toNumber();
+        const ar_get_rOwned_account_contract = (new BigNumber(await instancePigToken.get_rOwned(contract_address))).div(BIG9).toNumber();
+        console.log(chalk.yellow("ar_get_rOwned_account0 : ",ar_get_rOwned_account0.toString()));
+        console.log(chalk.yellow("ar_get_rOwned_account1 : ",ar_get_rOwned_account1.toString()));
+        console.log(chalk.yellow("ar_get_rOwned_account2 : ",ar_get_rOwned_account2.toString()));
+        console.log(chalk.yellow("ar_get_rOwned_account_contract : ",ar_get_rOwned_account_contract.toString()));
     
 }
