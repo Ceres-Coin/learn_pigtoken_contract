@@ -1,7 +1,7 @@
 const Migrations = artifacts.require("Migrations");
 const BigNumber = require('bignumber.js');
 
-const PigToken = artifacts.require("PigToken");
+const PigToken = artifacts.require("CeresDemo");
 const chalk = require('chalk');
 const { assert } = require('chai');
 
