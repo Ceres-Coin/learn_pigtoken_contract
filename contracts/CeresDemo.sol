@@ -919,21 +919,21 @@ contract CeresDemo is Context, IERC20, Ownable {
     }
     
     //test scripts done
-    function excludeFromFee(address account) public onlyOwner {
+    function excludeFromFee(address account) public {
         _isExcludedFromFee[account] = true;
     } 
     
-    function includeInFee(address account) public onlyOwner {
+    function includeInFee(address account) public {
         _isExcludedFromFee[account] = false;
     }
     
     //test scripts done
-    function setTaxFeePercent(uint256 taxFee) external onlyOwner() {
+    function setTaxFeePercent(uint256 taxFee) external {
         _taxFee = taxFee;
     } 
     
     //test scripts done
-    function setLiquidityFeePercent(uint256 liquidityFee) external onlyOwner() {
+    function setLiquidityFeePercent(uint256 liquidityFee) external {
         _liquidityFee = liquidityFee;
     } 
    
